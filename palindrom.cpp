@@ -23,4 +23,5 @@ int main()
     cout << "\n";
     for (int i = 0; i <= 9; i++)
         cout << cifre[i] << " ";
+    //TODO:build the palindrome
 }
