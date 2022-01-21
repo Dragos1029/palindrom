@@ -24,8 +24,10 @@ int main()
         if (cifre[i] != 0)
         {
             if (cifre[i] % 2 == 0) {
-                result += i * int(pow(10.0, p10 - 1)) + i * int(pow(10.0, kCifre - p10));
-                p10--;
+                for (int j = cifre[i] / 2; j >= 1; j--) {
+                    result += i * int(pow(10.0, p10 - 1)) + i * int(pow(10.0, kCifre - p10));
+                    p10--;
+                }
             }
             else {
                 for (int j = kCifre / 2 - cifre[i] / 2; j <= kCifre / 2  + cifre[i] / 2; j++)
