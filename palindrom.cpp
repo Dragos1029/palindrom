@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 using namespace std;
 
 ifstream in("palin.in");
 ofstream out("palin.out");
 
-int cifre[10] = { 0,0,0,0,0,0,0,0,0,0 }, kCifre = 0, nr, aux;
+int cifre[10] = { 0,0,0,0,0,0,0,0,0,0 }, kCifre = 0, nr, aux, result = 0, p10;
 
 int main()
 {
@@ -18,10 +19,19 @@ int main()
         kCifre++;
         aux /= 10;
     }
-    for (int i = 0; i <= 9; i++)
-        cout << i << " ";
-    cout << "\n";
-    for (int i = 0; i <= 9; i++)
-        cout << cifre[i] << " ";
-    //TODO:build the palindrome
+    p10 = kCifre;
+    for (int i = 9; i >= 0; i--) {
+        if (cifre[i] != 0)
+        {
+            if (cifre[i] % 2 == 0) {
+                result += i * int(pow(10.0, p10 - 1)) + i * int(pow(10.0, kCifre - p10));
+                p10--;
+            }
+            else {
+                for (int j = kCifre / 2 - cifre[i] / 2; j <= kCifre / 2  + cifre[i] / 2; j++)
+                    result += i * int(pow(10.0, j));
+            }
+        }
+    }
+    out << result;
 }
